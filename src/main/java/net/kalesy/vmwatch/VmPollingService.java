@@ -39,6 +39,7 @@ public class VmPollingService {
             metric.setMachine(m);
             metric.setTimestamp(Instant.now());
             System.out.println("Finished polling for " + hostname + ":" + port);
+            machineService.updateLastFetchedTime(m,metric);
             return metricService.saveMetric(metric);
         }catch(Exception e){
             System.err.println("Error getting metrics for "+hostname+":"+port);

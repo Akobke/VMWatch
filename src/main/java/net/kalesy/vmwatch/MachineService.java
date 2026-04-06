@@ -37,4 +37,9 @@ public class MachineService {
         tmp.setEnabled(true);
         return machineRepository.save(tmp);
     }
+    public Machine updateLastFetchedTime(Machine machine, Metric metric) {
+        Machine tmp = findById(machine.getId());
+        tmp.setLastSuccessfulPoll(metric.getTimestamp());
+        return machineRepository.save(tmp);
+    }
 }
