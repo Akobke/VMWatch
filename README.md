@@ -77,7 +77,7 @@ cd monitoring-backend
 
 The backend starts on port 8080 by default.
 
-### Agent
+### Agent (https://github.com/Akobke/VMWatchAgent)
 
 1. Deploy the agent JAR to each VM you want to monitor
 2. Run:
