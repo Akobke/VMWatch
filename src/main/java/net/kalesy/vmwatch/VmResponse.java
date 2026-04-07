@@ -1,9 +1,12 @@
 package net.kalesy.vmwatch;
 
+import java.util.HashMap;
+import java.util.List;
+
 public class VmResponse {
     private Double cpuUsage;
     private Double memoryUsage;
-    private Double diskUsage;
+    private HashMap<String,Double> diskUsage;
 
     public Double getCpuUsage() {
         return cpuUsage;
@@ -21,11 +24,11 @@ public class VmResponse {
         this.memoryUsage = memoryUsage;
     }
 
-    public Double getDiskUsage() {
+    public HashMap<String,Double> getDiskUsage() {
         return diskUsage;
     }
 
-    public void setDiskUsage(Double diskUsage) {
+    public void setDiskUsage(HashMap<String, Double> diskUsage) {
         this.diskUsage = diskUsage;
     }
 }

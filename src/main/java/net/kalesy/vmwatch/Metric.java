@@ -1,8 +1,12 @@
 package net.kalesy.vmwatch;
 
 import jakarta.persistence.*;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.ObjectMapper;
 
 import java.time.Instant;
+import java.util.HashMap;
+import java.util.List;
 
 @Entity
 public class Metric {
@@ -10,13 +14,16 @@ public class Metric {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Transient
+    ObjectMapper mapper = new ObjectMapper();
     @ManyToOne
     @JoinColumn(name = "machine_id")
     private Machine machine;
     private Instant timestamp;
     private double cpu;
     private double memory;
-    private double disk;
+    @Column(columnDefinition = "TEXT")
+    private String disk;
     public Long getId() { return id; }
 
     public void setId(Long id) { this.id = id; }
@@ -36,7 +43,19 @@ public class Metric {
 
     public void setMemory(double memory) { this.memory = memory; }
 
-    public double getDisk() { return disk; }
+    public HashMap<String, Double> getDisk() {
+        try{
+            return mapper.readValue(disk, new TypeReference<HashMap<String, Double>>(){});
+        }catch (Exception e){
+            return null;
+        }
+    }
 
-    public void setDisk(double disk) { this.disk = disk; }
+    public void setDisk(HashMap<String, Double> disk) {
+        try{
+            this.disk = mapper.writeValueAsString(disk);
+        }catch (Exception e){
+            this.disk = null;
+        }
+    }
 }
