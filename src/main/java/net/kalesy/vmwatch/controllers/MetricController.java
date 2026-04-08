@@ -1,5 +1,6 @@
 package net.kalesy.vmwatch.controllers;
 
+import net.kalesy.vmwatch.entities.Machine;
 import net.kalesy.vmwatch.services.MachineService;
 import net.kalesy.vmwatch.services.MetricService;
 import net.kalesy.vmwatch.entities.Metric;
@@ -29,7 +30,11 @@ public class MetricController {
     }
     @GetMapping("/metric/vm/{id}")
     public ResponseEntity<List<Metric>> metrics(@PathVariable Long id) {
-        List<Metric> res = metricService.getMetricsByMachine(machineService.findById(id));
+        Machine machine = machineService.findById(id);
+        if (machine == null) {
+            return ResponseEntity.notFound().build();
+        }
+        List<Metric> res = metricService.getMetricsByMachine(machine);
         return ResponseEntity.status(HttpStatus.OK).body(res);
     }
     @PostMapping("/metric")
