@@ -1,5 +1,8 @@
-package net.kalesy.vmwatch;
+package net.kalesy.vmwatch.controllers;
 
+import net.kalesy.vmwatch.services.MachineService;
+import net.kalesy.vmwatch.services.MetricService;
+import net.kalesy.vmwatch.entities.Metric;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,5 +1,8 @@
-package net.kalesy.vmwatch;
+package net.kalesy.vmwatch.services;
 
+import net.kalesy.vmwatch.entities.Machine;
+import net.kalesy.vmwatch.entities.Metric;
+import net.kalesy.vmwatch.repositories.MetricRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
 

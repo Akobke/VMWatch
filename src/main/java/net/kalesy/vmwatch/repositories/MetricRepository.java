@@ -1,7 +1,8 @@
-package net.kalesy.vmwatch;
+package net.kalesy.vmwatch.repositories;
 
+import net.kalesy.vmwatch.entities.Machine;
+import net.kalesy.vmwatch.entities.Metric;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 

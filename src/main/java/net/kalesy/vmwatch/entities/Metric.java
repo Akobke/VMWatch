@@ -1,4 +1,4 @@
-package net.kalesy.vmwatch;
+package net.kalesy.vmwatch.entities;
 
 import jakarta.persistence.*;
 import tools.jackson.core.type.TypeReference;
@@ -6,7 +6,6 @@ import tools.jackson.databind.ObjectMapper;
 
 import java.time.Instant;
 import java.util.HashMap;
-import java.util.List;
 
 @Entity
 public class Metric {

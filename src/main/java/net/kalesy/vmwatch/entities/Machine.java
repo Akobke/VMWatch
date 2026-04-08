@@ -1,4 +1,4 @@
-package net.kalesy.vmwatch;
+package net.kalesy.vmwatch.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
